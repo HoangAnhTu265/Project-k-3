@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="onlineSMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Emoji">
+    <Key>
+      <PropertyRef Name="Emojis_ID" />
+    </Key>
+    <Property Name="Emojis_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID1" Type="Int32" />
+    <Property Name="UserID2" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Emojis__UserID1__4E88ABD4" FromRole="Emojis" ToRole="Users" />
+    <NavigationProperty Name="User1" Relationship="Self.FK__Emojis__UserID2__4F7CD00D" FromRole="Emojis" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Friend">
+    <Key>
+      <PropertyRef Name="FriendsID" />
+    </Key>
+    <Property Name="FriendsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="FriendName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Friends__UserID__52593CB8" FromRole="Friends" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="Sender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Receiver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MessageContent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Messages__UserID__4BAC3F29" FromRole="Messages" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="WorkStatus" Type="Boolean" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Emojis" Relationship="Self.FK__Emojis__UserID1__4E88ABD4" FromRole="Users" ToRole="Emojis" />
+    <NavigationProperty Name="Emojis1" Relationship="Self.FK__Emojis__UserID2__4F7CD00D" FromRole="Users" ToRole="Emojis" />
+    <NavigationProperty Name="Friends" Relationship="Self.FK__Friends__UserID__52593CB8" FromRole="Users" ToRole="Friends" />
+    <NavigationProperty Name="Messages" Relationship="Self.FK__Messages__UserID__4BAC3F29" FromRole="Users" ToRole="Messages" />
+  </EntityType>
+  <Association Name="FK__Emojis__UserID1__4E88ABD4">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Emojis" Type="Self.Emoji" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Emojis">
+        <PropertyRef Name="UserID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Emojis__UserID2__4F7CD00D">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Emojis" Type="Self.Emoji" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Emojis">
+        <PropertyRef Name="UserID2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Friends__UserID__52593CB8">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Friends" Type="Self.Friend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Messages__UserID__4BAC3F29">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="onlineSMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Emojis" EntityType="Self.Emoji" />
+    <EntitySet Name="Friends" EntityType="Self.Friend" />
+    <EntitySet Name="Messages" EntityType="Self.Message" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__Emojis__UserID1__4E88ABD4" Association="Self.FK__Emojis__UserID1__4E88ABD4">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Emojis" EntitySet="Emojis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Emojis__UserID2__4F7CD00D" Association="Self.FK__Emojis__UserID2__4F7CD00D">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Emojis" EntitySet="Emojis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Friends__UserID__52593CB8" Association="Self.FK__Friends__UserID__52593CB8">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Messages__UserID__4BAC3F29" Association="Self.FK__Messages__UserID__4BAC3F29">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,69 @@
+﻿@model Project.Models.User
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+<head>
+    <link href="@Url.Content("~/Content/mycss.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<<div class="login-box">
+    <h2>Register</h2>
+    <form>
+        <div class="user-box">
+            <input type="text" name="" required="">
+            <label>Username</label>
+        </div>
+
+        <div class="user-box">
+            <input type="password" name="" required="">
+            <label>Password</label>
+        </div>
+
+        <div class="user-box">
+            <input type="password" name="" required="">
+            <label>Re-Password</label>
+        </div>
+
+        <div class="user-box">
+            <select class="form-control" id="Gender" name="Gender">
+                <option>Select Gender</option>
+                <option value="True">Male</option>
+                <option value="False">Female</option>
+            </select>
+        </div>
+
+
+        <div class="user-box">
+            
+                <label>Work status</label>
+
+                <select>
+                    <option value="True">Students</option>
+                    <option value="False">Employees</option>
+                </select>
+         
+        </div>
+
+        <div class="user-box">
+            <input type="text" name="Address" required="">
+            <label>Address</label>
+        </div>
+
+        <div class="user-box">
+            <input type="email" name="Email" required="">
+            <label>Email</label>
+        </div>
+
+        <div class="user-box">
+            <input type="date" name="Date" required="">
+            @*<label>Date of birth</label>*@
+        </div>
+        <p>
+            @Html.ActionLink("Submit", "Submit")
+        </p>
+
+    </form>
+</div>

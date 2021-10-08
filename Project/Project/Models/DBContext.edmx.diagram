@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2dec989903964a148e6cd5c813267e40" Name="Diagram1">
+        <EntityTypeShape EntityType="onlineSMSModel.Emoji" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineSMSModel.Friend" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineSMSModel.Message" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineSMSModel.User" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="onlineSMSModel.FK__Emojis__UserID1__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineSMSModel.FK__Emojis__UserID2__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineSMSModel.FK__Friends__UserID__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineSMSModel.FK__Messages__UserID__4BAC3F29" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
