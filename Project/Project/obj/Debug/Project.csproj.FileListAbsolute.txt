@@ -80,4 +80,7 @@ C:\Users\Admin\Desktop\Project kỳ 3\Project\Project\obj\Debug\Project.csproj.C
 C:\Users\Admin\Desktop\Project kỳ 3\Project\Project\obj\Debug\Project.csproj.CopyComplete
 C:\Users\Admin\Desktop\Project kỳ 3\Project\Project\obj\Debug\Project.dll
 C:\Users\Admin\Desktop\Project kỳ 3\Project\Project\obj\Debug\Project.pdb
-C:\Users\Admin\Desktop\Project kỳ 3\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\Project kỳ 3\Project\Project\bin\Microsoft.Configuration.ConfigurationBuilders.Base.dll
+C:\Users\Admin\Desktop\Project kỳ 3\Project\Project\bin\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll
+C:\Users\Admin\Desktop\Project kỳ 3\Project\Project\bin\Microsoft.Configuration.ConfigurationBuilders.Base.xml
+C:\Users\Admin\Desktop\Project kỳ 3\Project\Project\bin\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.xml

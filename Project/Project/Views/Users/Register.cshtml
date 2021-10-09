@@ -1,69 +1,104 @@
 ﻿@model Project.Models.User
-
+@*@using Project.Models*@
 @{
     ViewBag.Title = "Register";
 }
 
-<h2>Register</h2>
 <head>
     <link href="@Url.Content("~/Content/mycss.css")" rel="stylesheet" type="text/css" />
 </head>
 
-<<div class="login-box">
-    <h2>Register</h2>
-    <form>
-        <div class="user-box">
-            <input type="text" name="" required="">
-            <label>Username</label>
+
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        @using (Html.BeginForm("Register", "Users", FormMethod.Post))
+        {
+            //@Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Register</div>
+            </div>
+
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+
+                            <select class="form-control" id="Gender" name="Gender">
+                                <option>Select Gender</option>
+                                <option value="True">Male</option>
+                                <option value="False">Female</option>
+                            </select>
+
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.WorkStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                <select class="form-control" id="WorkStatus" name="WorkStatus">
+                                    <option>Select status</option>
+                                    <option value="True">Student</option>
+                                    <option value="False">Employees</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.WorkStatus, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Username)
+                        @Html.TextBoxFor(m => m.Username, "", new { @class = "form-control", @placeholder = "Username" })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "badge badge-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword)
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confim Password" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address)
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address" })
+                        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "badge badge-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+                        @if (ViewBag.error != null)
+                        {
+                            <span class="badge badge-danger">@ViewBag.error</span>
+                        }
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-danger" value="Register" />
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="user-box">
-            <input type="password" name="" required="">
-            <label>Password</label>
+            }
         </div>
-
-        <div class="user-box">
-            <input type="password" name="" required="">
-            <label>Re-Password</label>
-        </div>
-
-        <div class="user-box">
-            <select class="form-control" id="Gender" name="Gender">
-                <option>Select Gender</option>
-                <option value="True">Male</option>
-                <option value="False">Female</option>
-            </select>
-        </div>
-
-
-        <div class="user-box">
-            
-                <label>Work status</label>
-
-                <select>
-                    <option value="True">Students</option>
-                    <option value="False">Employees</option>
-                </select>
-         
-        </div>
-
-        <div class="user-box">
-            <input type="text" name="Address" required="">
-            <label>Address</label>
-        </div>
-
-        <div class="user-box">
-            <input type="email" name="Email" required="">
-            <label>Email</label>
-        </div>
-
-        <div class="user-box">
-            <input type="date" name="Date" required="">
-            @*<label>Date of birth</label>*@
-        </div>
-        <p>
-            @Html.ActionLink("Submit", "Submit")
-        </p>
-
-    </form>
 </div>

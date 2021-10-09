@@ -11,7 +11,9 @@ namespace Project.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,9 +29,19 @@ namespace Project.Models
         public Nullable<bool> Gender { get; set; }
         public Nullable<bool> WorkStatus { get; set; }
         public string Username { get; set; }
+
+        [Display(Name = "Password")]
         public string Password { get; set; }
+
+        [NotMapped]
+        [Required]
+        [System.ComponentModel.DataAnnotations.Compare("Password")]
+
+        public string ConfirmPassword { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
+
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DOB { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
