@@ -1,10 +1,3 @@
-/****** Script for SelectTopNRows command from SSMS  ******/
-	SELECT TOP (1000) [UserID]
-		  ,[Gender]
-		  ,[WorkStatus]
-		  ,[Username]
-		  ,[Password]
-		  ,[Address]
-		  ,[Email]
-		  ,[DOB]
-	  FROM [onlineSMS].[dbo].[Users]
+use onlineSMS
+
+select * from Users
