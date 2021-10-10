@@ -149,8 +149,8 @@ namespace Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var f_password = EncodePassword(password);
-                var data = db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(password)).ToList();
+                var f_password = EncodePassword(password);
+                var data = db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
                 if (data.Count() > 0)
                 {
                     //add session
@@ -193,8 +193,8 @@ namespace Project.Controllers
 
             if (ModelState.IsValid)
             {
-                //var f_password = EncodePassword(password);
-                var data = db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(password)).ToList();
+                var f_password = EncodePassword(password);
+                var data = db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
                 if (data.Count() > 0)
                 {
                     //add session
@@ -227,8 +227,8 @@ namespace Project.Controllers
                 var checkUserName = db.Users.FirstOrDefault(s => s.Username == _user.Username);
                 if (checkEmail == null && checkUserName == null)
                 {
-                    //_user.Password = EncodePassword(_user.Password);
-                    _user.Password = _user.Password;
+                    _user.Password = EncodePassword(_user.Password);
+                    //_user.Password = _user.Password;
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.Users.Add(_user);
                     db.SaveChanges();
@@ -251,21 +251,21 @@ namespace Project.Controllers
         }
 
         //create md5 string
-        //public static string EncodePassword(string originalPassword)
-        //{
-        //    //Declarations
-        //    Byte[] originalBytes;
-        //    Byte[] encodedBytes;
-        //    MD5 md5;
+        public static string EncodePassword(string originalPassword)
+        {
+            //Declarations
+            Byte[] originalBytes;
+            Byte[] encodedBytes;
+            MD5 md5;
 
-        //    //Instantiate MD5CryptoServiceProvider, get bytes for original password and compute hash (encoded password)
-        //    md5 = new MD5CryptoServiceProvider();
-        //    originalBytes = ASCIIEncoding.Default.GetBytes(originalPassword);
-        //    encodedBytes = md5.ComputeHash(originalBytes);
+            //Instantiate MD5CryptoServiceProvider, get bytes for original password and compute hash (encoded password)
+            md5 = new MD5CryptoServiceProvider();
+            originalBytes = ASCIIEncoding.Default.GetBytes(originalPassword);
+            encodedBytes = md5.ComputeHash(originalBytes);
 
-        //    //Convert encoded bytes back to a 'readable' string
-        //    return BitConverter.ToString(encodedBytes);
-        //}
+            //Convert encoded bytes back to a 'readable' string
+            return BitConverter.ToString(encodedBytes);
+        }
 
     }
 }
