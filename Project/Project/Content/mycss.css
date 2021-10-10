@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 50px;
     font-family: sans-serif;
-    background: linear-gradient(#141e30, #243b55);
+   /* background: linear-gradient(#141e30, #243b55);*/
 }
 
 select {
@@ -23,7 +23,11 @@ select {
     background: transparent;
 }
 
-
+.card-header {
+    color: aliceblue;
+    font-size: 18px;
+    margin-top: 20px;
+}
 
 .login-box {
     position: absolute;

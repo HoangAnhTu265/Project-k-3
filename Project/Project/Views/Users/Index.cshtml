@@ -6,80 +6,31 @@
 
 <h2>Index</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<p>
+</p>*@
+@*<p>
     @Html.ActionLink("Log in", "Login", "Users", routeValues: null, htmlAttributes: new { id = "loginLink" })
-</p>
-<table class="table">
-    <tr>
-        <th></th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WorkStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DOB)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-<tr>
-    <th></th>
-    <td>
-        @if(item.Gender == true)
+</p>*@
+<div class="row justify-content-md-start">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Welcome
+            </div>
+            <div class="card-body">
+                @if (Session["FullName"] != null)
                 {
-                    <span>Male</span>
-                } else
-                {
-                    <span>Female</span>
+                    <p>Name: @Session["FullName"].ToString()</p>
+                    <p>Gender: @Session["Gender"].ToString()</p>
+                    <p>WorkStatus: @Session["WorkStatus"].ToString()</p>
+                    <p>Email: @Session["Email"].ToString()</p>
+                    <p>Address: @Session["Address"].ToString()</p>
+                    <p>DOB: @Session["DOB"].ToString()</p>
+                    <a href="@Url.Action("Logout","Users")" class="btn btn-warning">Logout</a>
                 }
-    </td>
-    <td>
-        @if(item.WorkStatus == true)
-                {
-                    <span>Student</span>
-                } else
-                {
-                    <span>Employees</span>
-                }
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Username)
-    </td>
-    
-    <td>
-        @Html.DisplayFor(modelItem => item.Address)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Email)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DOB)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
-        
-    </td>
-</tr>
-}
+            </div>
+        </div>
 
-</table>
+    </div>
+</div>

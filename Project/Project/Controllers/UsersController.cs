@@ -155,7 +155,26 @@ namespace Project.Controllers
                 {
                     //add session
                     Session["FullName"] = data.FirstOrDefault().Username;
+
+                    if(data.FirstOrDefault().Gender == true)
+                    {
+                        Session["Gender"] = "Male";
+                    } else if(data.FirstOrDefault().Gender == false)
+                    {
+                        Session["Gender"] = "Female";
+                    }
+                    
+                    if(data.FirstOrDefault().WorkStatus == true)
+                    {
+                        Session["WorkStatus"] = "Students";
+                    } else if(data.FirstOrDefault().WorkStatus == false)
+                    {
+                        Session["WorkStatus"] = "Employees";
+                    }
+                    
                     Session["Email"] = data.FirstOrDefault().Email;
+                    Session["Address"] = data.FirstOrDefault().Address;
+                    Session["DOB"] = data.FirstOrDefault().DOB;
                     Session["UserID"] = data.FirstOrDefault().UserID;
                     return RedirectToAction("Index");
                 }
