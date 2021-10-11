@@ -9,7 +9,7 @@
     <link href="@Url.Content("~/Content/mycss.css")" rel="stylesheet" type="text/css" />
 </head>
 
-<div class="row justify-content-md-center">
+<div class="login-box" style="top:2.9cm">
     <div class="col-md-4">
         <div class="card">
             <div class="card-header">
@@ -19,13 +19,13 @@
                 @using (Html.BeginForm("Login", "Users", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Email)
-                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                    <div class="user-box">
+                        @*@Html.LabelFor(m => m.Email)*@
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email"})
 
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password)
+                    <div class="user-box">
+                        @*@Html.LabelFor(m => m.Password)*@
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
                     </div>
                     <div class="form-group">
